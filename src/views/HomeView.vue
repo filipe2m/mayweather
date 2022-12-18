@@ -1,9 +1,12 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import CityList from "../components/CityListComponent.vue";
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
+  <main class="container text-white">
+    <div class="flex flex-col gap-4">
+      <CityList />
+    </div>
   </main>
 </template>
+
