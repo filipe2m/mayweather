@@ -1,14 +1,30 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createApp } from 'vue';
+import { createI18n } from 'vue-i18n';
+import { createPinia } from 'pinia';
 
-import App from './App.vue'
-import router from './router'
+import App from './App.vue';
+import router from './router';
 
 import "./assets/tailwind.css";
 
-const app = createApp(App)
+import { pt } from './locales/pt';
+import { en } from './locales/en';
 
-app.use(createPinia())
-app.use(router)
+const i18n = createI18n({
+    locale: 'pt',
+    fallbackLocale: 'pt',
+    messages: {
+        pt, 
+        en
+    }
+});
 
-app.mount('#app')
+const pinia = createPinia()
+
+const app = createApp(App);
+
+app.use(pinia);
+app.use(router);
+app.use(i18n);
+
+app.mount('#app');
