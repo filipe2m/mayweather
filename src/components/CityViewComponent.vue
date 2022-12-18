@@ -74,7 +74,7 @@ const weatherData = await getWeatherData();
     <hr class="border-white border-1  w-full" />
 
     <!-- Weekly Weather -->
-    <div class="w-screen bg-sky-900 bg-opacity-50 flex items-center justify-center">
+    <div class="w-full bg-sky-900 bg-opacity-50 flex items-center justify-center">
     <div class="max-w-screen-md w-full py-12">
       <div class="mx-8 text-white">
         <h2 class="mb-4 text-xl">{{ $t('weather.forecast') }}</h2>
