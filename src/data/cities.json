@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "city": "Porto",
+        "country": "Portugal",
+        "lat": 41.1494512,
+        "lng": -8.6107884
+    },
+    {
+        "id": 2,
+        "city": "Lisboa",
+        "country": "Portugal",
+        "lat": 38.7077507,
+        "lng": -9.1365919
+    },
+    {
+        "id": 3,
+        "city": "Faro",
+        "country": "Portugal",
+        "lat": 37.0162727,
+        "lng": -7.9351771
+    },
+    {
+        "id": 4,
+        "city": "Funchal",
+        "country": "Portugal",
+        "lat": 32.6496497,
+        "lng": -16.9086783
+    }
+]
