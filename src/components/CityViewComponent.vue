@@ -1,37 +1,16 @@
 <script setup>
-import axios from "axios";
 import { useRoute } from "vue-router";
 
+import { useWeatherStore } from '../stores/WeatherStore';
+const weatherStore = useWeatherStore();
+
 const route = useRoute();
-const getWeatherData = async () => {
-  try {
-    const weatherData = await axios.get(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${route.query.lat}&lon=${route.query.lng}&exclude={part}&appid=9666f2afb7124254fd323b58e9b72122&units=metric`
-    );
+const weatherData = await weatherStore.getWeatherData(route.query.lat, route.query.lng);
 
-    // cal current date & time
-    const localOffset = new Date().getTimezoneOffset() * 60000;
-    const utc = weatherData.data.current.dt * 1000 + localOffset;
-    weatherData.data.currentTime =
-      utc + 1000 * weatherData.data.timezone_offset;
-
-    // cal hourly weather offset
-    weatherData.data.hourly.forEach((hour) => {
-      const utc = hour.dt * 1000 + localOffset;
-      hour.currentTime =
-        utc + 1000 * weatherData.data.timezone_offset;
-    });
-
-    return weatherData.data;
-  } catch (err) {
-    console.log(err);
-  }
-};
-const weatherData = await getWeatherData();
 </script>
 
 <template>
-  <div class="flex flex-col flex-1 items-center">
+  <div class="flex flex-col flex-1 items-center" v-if="weatherData">
     <!-- Weather Overview -->
     <div class="flex flex-col items-center text-white py-12">
       <h1 class="text-4xl mb-2">{{ route.params.city }}</h1>
