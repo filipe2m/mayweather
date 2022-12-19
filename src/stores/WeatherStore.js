@@ -8,7 +8,11 @@ export const useWeatherStore = defineStore('WeatherStore', {
     actions: {
         async getWeatherData(lat, lng) {
             this.weather = await getWeatherFromApi(lat, lng);
-            return this.weather;
         },
     },
+    getters: {
+        getWeather(state) {
+            return state.weather
+        }
+    }
 })
