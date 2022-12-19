@@ -5,7 +5,7 @@ import { useWeatherStore } from '../stores/WeatherStore';
 const weatherStore = useWeatherStore();
 
 const route = useRoute();
-const fetchWeatherData = await weatherStore.getWeatherData(route.query.lat, route.query.lng);
+await weatherStore.getWeatherData(route.query.lat, route.query.lng);
 const weatherData = weatherStore.getWeather;
 </script>
 
