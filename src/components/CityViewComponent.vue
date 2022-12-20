@@ -16,7 +16,7 @@ const weatherData = weatherStore.getWeather;
       <h1 class="text-4xl mb-2">{{ route.params.city }}</h1>
       <p class="text-sm mb-12">
         {{
-          new Date(weatherData.currentTime).toLocaleDateString(
+          new Date().toLocaleDateString(
             $t('date.format'),
             {
               weekday: "short",
@@ -26,7 +26,7 @@ const weatherData = weatherStore.getWeather;
           )
         }}
         {{
-          new Date(weatherData.currentTime).toLocaleTimeString(
+          new Date().toLocaleTimeString(
             $t('date.format'),
             {
               timeStyle: "short",
