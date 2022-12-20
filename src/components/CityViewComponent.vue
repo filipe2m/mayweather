@@ -1,11 +1,12 @@
 <script setup>
 import { useRoute } from "vue-router";
-
 import { useWeatherStore } from '../stores/WeatherStore';
-const weatherStore = useWeatherStore();
 
+const weatherStore = useWeatherStore();
 const route = useRoute();
+
 await weatherStore.getWeatherData(route.query.lat, route.query.lng);
+
 const weatherData = weatherStore.getWeather;
 </script>
 
@@ -42,7 +43,7 @@ const weatherData = weatherStore.getWeather;
         {{ Math.round(weatherData.current.feels_like) }} &deg;C
       </p>
       <img
-        class="w-[150px] h-auto"
+        class="w-[100px] h-auto"
         :src="
           `http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`
         "
@@ -53,7 +54,7 @@ const weatherData = weatherStore.getWeather;
     <hr class="border-white border-1  w-full" />
 
     <!-- Weekly Weather -->
-    <div class="w-full bg-sky-900 bg-opacity-50 flex items-center justify-center">
+    <div class="w-full bg-gradient-to-t from-sky-500 to-sky-700 bg-opacity-50 flex items-center justify-center">
     <div class="max-w-screen-md w-full py-12">
       <div class="mx-8 text-white">
         <h2 class="mb-4 text-xl">{{ $t('weather.forecast') }}</h2>
@@ -68,7 +69,7 @@ const weatherData = weatherStore.getWeather;
               )
             }}
           </p>
-          <img class="w-[50px] h-[50px] object-cover" :src="`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`" alt="" />
+          <img class="w-[75px] h-[75px] object-cover" :src="`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`" alt="" />
           <div class="flex gap-2 flex-1 justify-end">
             <p>{{ $t('weather.max') }}: {{ Math.round(day.temp.max) }}&deg;C</p>
             <p>Min: {{ Math.round(day.temp.min) }}&deg;C</p>
